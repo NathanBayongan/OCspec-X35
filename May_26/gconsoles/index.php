@@ -1,6 +1,6 @@
 <?php //this opens the php code section
 session_start();
-
+require_once "assets/dbcnct.php";
 
 
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
@@ -23,6 +23,13 @@ echo "<html>";  // opening html
             echo "<img src = 'images/Place.webp'>";
             echo "<p>Welcome, gamer! This is where your journey to greatness begins. The right console and gear can take you from “just playing” to owning every challenge that comes your way. It’s not just about the games—it’s about pushing your limits, leveling up your skills, and proving to yourself what you’re really capable of. So power up, stay focused, and get ready to crush it like the champion you are. The game is yours—go make it legendary.</p>";
 
+            try{
+                $conn = dbconnect_insert();
+                echo"Success";
+
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
             echo "</div>";
 
         echo "</div>";
