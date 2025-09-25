@@ -20,8 +20,11 @@ echo "<html>";  // opening html
         echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
             echo "<form method='post' action='login.php'>";
             echo "<input type= 'text'name ='username' placeholder='username'>";
+            echo "<br>";
             echo "<input type= 'password'name ='password' placeholder='password'>";
-            echo "<input type= 'submit' value='login'></input>";
+            echo "<br>";
+            echo "<input type= 'submit' value='login' id='submit'>";
+            echo "</form>";
 
 
         echo "</div>";

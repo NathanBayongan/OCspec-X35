@@ -13,11 +13,12 @@
 nav ul {
 
     border :1px solid green;
-    width:300px;
     list-style: none;/*removes bullet points*/
-    margin:0;/*removes margin*/
+    width: 300px;
+    margin:auto;
     padding:0;/*removes padding*/
     background-color: #fff;/* adds a background color*/
+    justify-content: flex-start;
 
 }
 
@@ -32,5 +33,24 @@ nav li:hover {/*sets up roll over for the nav bar */
 
 h1 {
     color: red;
+    font-weight: bold;
+    text-underline: #000000;
 }
+
+img {
+    width:300px;
+}
+
+body {
+    background-color: peachpuff;
+}
+
+p {
+    background-color: cyan;
+}
+
+#submit{
+    font-size: 30px;
+}
+
 
