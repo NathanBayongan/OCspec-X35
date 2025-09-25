@@ -1,0 +1,28 @@
+.container {
+    display: flex;/* converting elements into boxes */
+    justify-content: center;/* making focus to the left */
+    text-align: center;/* putting text to left side */
+    flex-direction: column;/* makes it go down instead of across*/
+    font-family:Arial,Helvetica,sans-serif;/* default font */
+    margin-left:30px;/* adding space to left so it doesnt rest on side of the screen*/
+}
+
+nav ul {
+    list-style: none;/*removes bullet points*/
+    margin:0;/*removes margin*/
+    padding:0;/*removes padding*/
+    display: flex; /* stops moving vertically*/
+    justify-content: flex-start;/* starts stacking horizontally*/
+    background-color: #fff;/* adds a background color*/
+
+}
+
+nav li{/* creates space around li items in nav bar */
+    padding:5px 20px 5px 20px;/* top right bottom left padding*/
+}
+
+nav li:hover {/*sets up roll over for the nav bar */
+    background-color: #873245;/*changes color on hover*/
+
+}
+
