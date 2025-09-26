@@ -13,7 +13,7 @@ function dbconnect_insert()
     $dbname = "gconsole"; //database name to connect to
 
     try { // attempt this block of code, cathing an error
-        $conn = new PDO("mysql:host=$servername;port-3306;dbname=$dbname", $dbusername, $dbpassword);
+        $conn = new PDO("mysql:host=$servername;port=3306;dbname=$dbname", $dbusername, $dbpassword);
         // Instead of PDO, We could use MySQLI connection, but PDO can connect to any kind of data source
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // sets error modes
         return $conn;

@@ -1,15 +1,16 @@
 <?php //this opens the php code section
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] === "POST"){
-    try{
+require_once "assets/common.php";
+require_once "assets/dbcnct.php";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    try {
         new_console(dbconnect_insert(), $_POST);
         $_SESSION['usermessage'] = "SUCCESS:L Console created";
-        catch(PDOException $e){
-            $_SESSION['user']
-        }
+    } Catch(PDOException $e) {
+            $_SESSION['user'];
     }
-
 }
 
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
@@ -29,20 +30,21 @@ require_once "assets/topbar.php"; // presenting header
 require_once "assets/nav.php";// presenting navigation bar
 
 echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
-echo "<form method='post' action='login.php'>";
-echo "<input type= 'text' name ='username' placeholder='username'>";
-echo "<br>";
-echo "<input type= 'password' name ='password' placeholder='password'>";
-echo "<br>";
-echo "<input type= 'text' name ='signupdate' placeholder='sign up date'>";
-echo "<br>";
-echo "<input type= 'text' name ='dob' placeholder='date of birth'>";
-echo "<br>";
-echo "<input type= 'text' name ='country' placeholder='county'>";
-echo "<br>";
-echo "<input type= 'submit' value='register' id='submit'>";
-echo "</form>";
-
+    echo "<form method='post' action='login.php'>";
+        echo "<input type= 'text' name ='username' placeholder='username'>";
+        echo "<br>";
+        echo "<input type= 'password' name ='password' placeholder='password'>";
+        echo "<br>";
+        echo "<input type= 'text' name ='signupdate' placeholder='sign up date'>";
+        echo "<br>";
+        echo "<input type= 'text' name ='dob' placeholder='date of birth'>";
+        echo "<br>";
+        echo "<input type= 'text' name ='country' placeholder='country'>";
+        echo "<br>";
+        echo "<input type= 'submit' value='register' id='submit'>";
+    echo "</form>";
+echo"<br>";
+echo user_message();
 
 echo "</div>";
 
