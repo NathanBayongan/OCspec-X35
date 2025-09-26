@@ -1,6 +1,17 @@
 <?php //this opens the php code section
 session_start();
 
+if ($_SERVER["REQUEST_METHOD"] === "POST"){
+    try{
+        new_console(dbconnect_insert(), $_POST);
+        $_SESSION['usermessage'] = "SUCCESS:L Console created";
+        catch(PDOException $e){
+            $_SESSION['user']
+        }
+    }
+
+}
+
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
 
 echo "<html>";  // opening html

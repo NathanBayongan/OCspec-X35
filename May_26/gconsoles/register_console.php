@@ -18,7 +18,7 @@ require_once "assets/topbar.php"; // presenting header
 require_once "assets/nav.php";// presenting navigation bar
 
 echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
-echo "<form method='post' action='login.php'>";
+echo "<form method='post' action=''>";
 echo "<input type= 'text' name ='console_name' placeholder='console name'>";
 echo "<br>";
 echo "<input type= 'text' name ='release_date' placeholder='release date'>";

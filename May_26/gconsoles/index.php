@@ -25,7 +25,7 @@ echo "<html>";  // opening html
 
             try{
                 $conn = dbconnect_insert();
-                echo"Success";
+                echo"67";
 
             }catch(PDOException $e){
                 echo $e->getMessage();
