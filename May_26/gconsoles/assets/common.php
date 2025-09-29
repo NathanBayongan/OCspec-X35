@@ -84,3 +84,28 @@ function reg_user($conn, $post){
         throw new Exception("User Registration error: ", $e); // throws exception
     }
 }
+
+function login($conn, $post){
+    try{ // try this code, catch errors
+        $sql = "SELECT * FROM user WHERE username = ?"; // set up sql statement
+        $stmt = $conn->prepare($sql); // prepares
+        $stmt->bindParam(1, $post['username']); // binds the parameters to execute
+        $stmt->execute(); // runs sql code
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); // Brings back results
+        $conn = null; // Breaks off connection once it is used
+
+        if($result){ // If there is a result returned
+            return $result;
+
+        } else {
+            $SESSION['Error'] = "User not found";
+            header("Location: index.php");
+            exit; // Stops further execution
+        }
+
+    } catch (Exception $e) {
+        $SESSION['Error'] = $e->getMessage();
+        header("Location: index.php");
+        exit; // Stops further execution
+    }
+}

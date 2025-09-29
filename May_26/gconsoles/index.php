@@ -1,7 +1,8 @@
 <?php //this opens the php code section
 session_start();
-require_once "assets/dbcnct.php";
 
+require_once "assets/dbcnct.php";
+require_once "assets/common.php";
 
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
 
@@ -25,11 +26,14 @@ echo "<html>";  // opening html
 
             try{
                 $conn = dbconnect_insert(); // establishes connection to database
-                echo"67"; // display message to ensure the connection is valid
+                echo""; // display message to ensure the connection is valid
 
             }catch(PDOException $e){
                 echo $e->getMessage();
             }
+
+            echo user_message();
+
             echo "</div>";
 
         echo "</div>";

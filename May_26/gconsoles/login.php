@@ -1,6 +1,31 @@
 <?php //this opens the php code section
 session_start();
 
+require_once"assets/dbcnct.php";
+require_once"assets/common.php";
+
+if (isset($_SESSION['user'])){
+    $_SESSION["usermessage"] = "You are already logged in";
+    header("Location: index.php");
+    exit; // stops further execution
+}
+elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $usr = login(dbconnect_insert(), $_POST);
+
+    if ($usr && password_verify($_POST['password'], $usr["password"])) {
+        $_SESSION["user"] = true;
+        $_SESSION["user_id"] = $usr["user_id"];
+        $_SESSION["usermessage"] = "Sucecss! = user successfully logged in";
+        header("Location: index.php");
+        exit;
+    } else {
+        $_SESSION["usermessage"] = "Error: Login and Password do not match";
+        header("Location: login.php");
+        exit;
+    }
+}
+
+
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
 
 echo "<html>";  // opening html
