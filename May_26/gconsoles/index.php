@@ -24,8 +24,8 @@ echo "<html>";  // opening html
             echo "<p>Welcome, gamer! This is where your journey to greatness begins. The right console and gear can take you from “just playing” to owning every challenge that comes your way. It’s not just about the games—it’s about pushing your limits, leveling up your skills, and proving to yourself what you’re really capable of. So power up, stay focused, and get ready to crush it like the champion you are. The game is yours—go make it legendary.</p>";
 
             try{
-                $conn = dbconnect_insert();
-                echo"67";
+                $conn = dbconnect_insert(); // establishes connection to database
+                echo"67"; // display message to ensure the connection is valid
 
             }catch(PDOException $e){
                 echo $e->getMessage();

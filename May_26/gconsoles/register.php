@@ -1,16 +1,22 @@
 <?php //this opens the php code section
 session_start();
 
-require_once "assets/common.php";
-require_once "assets/dbcnct.php";
+require_once "assets/common.php"; // connects this to the common function
+require_once "assets/dbcnct.php"; // connects this to the function that connects it to the database
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    try {
-        new_console(dbconnect_insert(), $_POST);
-        $_SESSION['usermessage'] = "SUCCESS:L Console created";
-    } Catch(PDOException $e) {
-            $_SESSION['user'];
+if ($_SERVER["REQUEST_METHOD"] === "POST") { // checks the request method
+
+    if(!only_user(dbconnect_insert(), $_POST["username"])){
+
+        if(reg_user(dbconnect_insert(), $_POST)){
+            $_SESSION["usermessage"] = "User has been created successfully";
+        } else {
+            $_SESSION["usermessage"] = "User registration failed";
+        }
+    } else {
+        $_SESSION["usermessage"] = "Error: User cannot be created";
     }
+
 }
 
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
@@ -30,7 +36,7 @@ require_once "assets/topbar.php"; // presenting header
 require_once "assets/nav.php";// presenting navigation bar
 
 echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
-    echo "<form method='post' action='login.php'>";
+    echo "<form method='post' action=''>";
         echo "<input type= 'text' name ='username' placeholder='username'>";
         echo "<br>";
         echo "<input type= 'password' name ='password' placeholder='password'>";
