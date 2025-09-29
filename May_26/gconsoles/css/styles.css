@@ -7,17 +7,17 @@
     margin-left:30px;/* adding space to left so it doesnt rest on side of the screen*/
 }
 .topbari{
-    border :1px solid saddlebrown;
+    border :1px solid papayawhip;
 }
 
 nav ul {
 
-    border :1px solid green;
+    border :1px solid lightpink;
     list-style: none;/*removes bullet points*/
     width: 300px;
     margin:auto;
     padding:0;/*removes padding*/
-    background-color: #fff;/* adds a background color*/
+    background-color: #F0EBCE;/* adds a background color*/
     justify-content: flex-start;
 
 }
@@ -27,12 +27,12 @@ nav li{/* creates space around li items in nav bar */
 }
 
 nav li:hover {/*sets up roll over for the nav bar */
-    background-color: #873245;/*changes color on hover*/
+    background-color: #F8D210;/*changes color on hover*/
 
 }
 
 h1 {
-    color: red;
+    color: #000000;
     font-weight: bold;
     text-underline: #000000;
 }
@@ -42,11 +42,11 @@ img {
 }
 
 body {
-    background-color: peachpuff;
+    background-color: #F87096;
 }
 
 p {
-    background-color: cyan;
+    background-color: #F0EBCE;
 }
 
 #submit{
