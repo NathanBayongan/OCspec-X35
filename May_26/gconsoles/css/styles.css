@@ -8,6 +8,7 @@
 }
 .topbari{
     border :1px solid papayawhip;
+    background-color: #F87096;
 }
 
 nav ul {
@@ -42,7 +43,7 @@ img {
 }
 
 body {
-    background-color: #F87096;
+    background-color: lightpink;
 }
 
 p {
