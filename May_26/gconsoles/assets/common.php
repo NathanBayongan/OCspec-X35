@@ -131,3 +131,12 @@ function auditor($conn, $userid, $code, $long){ // on doing any action, auditor 
     $conn = null; // closes the connection so it can't be abused
     return true; // Registration successful
 }
+
+function getnewconsoleid($conn, $new_console){
+    $sql = "SELECT console_id FROM console WHERE console_name = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(1, $new_console);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result["console_id"];
+}

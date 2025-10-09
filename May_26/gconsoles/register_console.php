@@ -14,6 +14,7 @@ if (!isset($_SESSION['user'])) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
         new_console(dbconnect_insert(), $_POST);
+        auditor(dbconnect_insert(), $_SESSION['user_id'], "reg", "New console registered: ". getnewconsoleid(dbconnect_insert(), $_POST['console_name']));
         $_SESSION["usermessage"] = "Successfully registered console!";
     } catch (PDOException $e) {
         $_SESSION["usermessage"] = $e->getMessage();
