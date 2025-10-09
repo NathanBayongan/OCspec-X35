@@ -109,3 +109,25 @@ function login($conn, $post){
         exit; // Stops further execution
     }
 }
+
+function getnewuserid($conn, $username){
+    $sql = "SELECT user_id FROM user WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(1, $username);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result["user_id"];
+}
+function auditor($conn, $userid, $code, $long){ // on doing any action, auditor is
+    $sql = "INSERT INTO audit (date, userid, code, longdesc) VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql); // prepares the sql
+    $date = date('Y-m-d'); // Y-m-d is the date orientation that php needs/accepts
+    $stmt->bindParam(1, $date); // bind parameters for security
+    $stmt->bindParam(2, $userid);
+    $stmt->bindParam(3, $code);
+    $stmt->bindParam(4, $long);
+
+    $stmt->execute(); // run the query to insert
+    $conn = null; // closes the connection so it can't be abused
+    return true; // Registration successful
+}

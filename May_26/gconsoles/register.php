@@ -9,7 +9,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // checks the request method
     if(!only_user(dbconnect_insert(), $_POST["username"])){
 
         if(reg_user(dbconnect_insert(), $_POST)){
+            auditor(dbconnect_insert(), getnewuserid(dbconnect_insert(), $_POST["username"]), "reg", "New User successfully registered");
             $_SESSION["usermessage"] = "User has been created successfully";
+            header("Location: login.php");
+            exit;
+
         } else {
             $_SESSION["usermessage"] = "User registration failed";
         }

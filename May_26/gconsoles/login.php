@@ -16,6 +16,7 @@ elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["user"] = true;
         $_SESSION["user_id"] = $usr["user_id"];
         $_SESSION["usermessage"] = "Sucecss! = user successfully logged in";
+        auditor(dbconnect_insert(), $_SESSION["user_id"], "log", "User successfully logged in");
         header("Location: index.php");
         exit;
     } else {
