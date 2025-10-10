@@ -4,21 +4,22 @@
     text-align: center;/* putting text to left side */
     flex-direction: column;/* makes it go down instead of across*/
     font-family:Arial,Helvetica,sans-serif;/* default font */
-    margin-left:30px;/* adding space to left so it doesnt rest on side of the screen*/
+    font-size:20px;
+    margin-left:40px;/* adding space to left so it doesnt rest on side of the screen*/
+    margin-right:40px;
 }
 .topbari{
-    border :1px solid papayawhip;
-    background-color: #F87096;
+    background-color: #606C7C;
 }
 
 nav ul {
 
-    border :1px solid lightpink;
+    border :5px solid #B1B6BA;
     list-style: none;/*removes bullet points*/
     width: 300px;
     margin:auto;
     padding:0;/*removes padding*/
-    background-color: #F0EBCE;/* adds a background color*/
+    background-color: #D9D9D9;/* adds a background color*/
     justify-content: flex-start;
 
 }
@@ -28,7 +29,7 @@ nav li{/* creates space around li items in nav bar */
 }
 
 nav li:hover {/*sets up roll over for the nav bar */
-    background-color: #F8D210;/*changes color on hover*/
+    background-color: darkgrey;/*changes color on hover*/
 
 }
 
@@ -38,18 +39,24 @@ h1 {
     text-underline: #000000;
 }
 
-img {
-    width:300px;
-}
-
 body {
-    background-color: lightpink;
+    background-color: #83ADB5;
 }
 
 p {
-    background-color: #F0EBCE;
+    background-color: #D9D9D9;
+    width: 1500px;
+    margin: auto;
+    font-size:30px;
 }
 
-#submit{
+.content {
+    border :5px solid #B1B6BA;
+    margin:auto;
+    margin-top:10px;
+    width:1500px;
+}
+
+#submit {
     font-size: 30px;
 }
