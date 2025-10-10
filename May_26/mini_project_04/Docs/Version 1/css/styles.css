@@ -50,11 +50,24 @@ p {
     font-size:30px;
 }
 
+#Bold {
+    font-weight: bold;
+}
+
 .content {
-    border :5px solid #B1B6BA;
+    background-color: #B1B6BA;
+    border :15px solid #B1B6BA;
     margin:auto;
-    margin-top:10px;
+    margin-top:20px;
     width:1500px;
+}
+
+#top {
+    padding-top: 5px;
+}
+
+#bottom {
+    padding-bottom: 10px;
 }
 
 #submit {

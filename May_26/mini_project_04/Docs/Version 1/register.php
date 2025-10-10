@@ -6,21 +6,14 @@ require_once "assets/common.php"; // connects this to the common function
 require_once "assets/dbconn.php"; // connects this to the function that connects it to the database
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") { // checks the request method
-
-
-
-        if (reg_user(dbconnect_insert(), $_POST)) {
+    if (reg_user(dbconnect_insert(), $_POST)) {
             $_SESSION["usermessage"] = "User has been created successfully";
             header("Location: index.php");
             exit;
 
         } else {
             $_SESSION["usermessage"] = "User registration failed";
-        }
-    } else {
-        $_SESSION["usermessage"] = "Error: User cannot be created";
-
-
+    }
 }
 
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
@@ -37,7 +30,6 @@ echo "<body>"; // opening body
 
 echo "<div class ='container'>"; // class container to give all items a default to reduce need for styling later
 require_once "assets/topbar.php"; // presenting header
-require_once "assets/nav.php";// presenting navigation bar
 
 echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
 echo "<form method='post' action=''>";
@@ -57,7 +49,7 @@ echo "<br>";
 echo user_message();
 
 echo "</div>";
-
+require_once "assets/nav.php";// presenting navigation bar
 echo "</div>";
 
 echo "</body>";

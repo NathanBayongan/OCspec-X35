@@ -30,8 +30,17 @@ require_once "assets/topbar.php"; // presenting header
 echo '<br>';
 
 echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
-echo "<p> Welcome to </p>";
-echo "<p> Primary Oaks Surgery </p>";
+echo "<p id='top' id='Bold'> Welcome to<br></p>";
+echo "<p id='bottom' id='Bold'>Primary Oaks Surgery </p>";
+echo '<br>';
+echo "<p id='top'>Information<br>";
+echo '<br>';
+echo '<br>';
+echo '<br>';
+echo '<br>';
+echo '<br>';
+echo '<br>';
+echo "here</p>";
 
 try {
     $conn = dbconnect_insert(); // establishes connection to database
@@ -48,8 +57,6 @@ if (!$message) { // checks if 'message' variable has been set
 }
 
 echo "</div>";
-echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
-echo "<p> Info </p>";
 
 echo "</div>";
 echo '<br>';
