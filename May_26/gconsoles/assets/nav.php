@@ -20,3 +20,4 @@ echo "<div class='navi'>";//declares class
     echo "</nav>";
 echo "</div>";
 ?>
+

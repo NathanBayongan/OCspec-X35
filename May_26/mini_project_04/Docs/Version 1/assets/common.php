@@ -17,18 +17,18 @@ function reg_user($conn, $post)
 {
     try {
         // prepare and execute the SQL query
-        $sql = "INSERT INTO user (username, password, signupdate, dob, country) VALUES (?, ?, ?, ?, ?)"; // prepares statement
+        $sql = "INSERT INTO user (fname, sname, dob, gender, password) VALUES (?, ?, ?, ?, ?)"; // prepares statement
         $stmt = $conn->prepare($sql); // prepare to sql
 
-        $stmt->bindParam(1, $post['username']); // bind parameters for security
-        // hash the password]
+        $stmt->bindParam(1, $post['fname']); // bind parameters for security
+        $stmt->bindParam(2, $post['sname']);
+        $stmt->bindParam(3, $post['dob']);
+        $stmt->bindParam(4, $post['gender']);
+        // hash the password
         $hpswd = password_hash($post['password'], PASSWORD_DEFAULT); // has the password
         // Using in built php library using default encryption because we have nothing else built into this code base
         // In a business environment, it's better to use PASSWORD_BCRYPTb
-        $stmt->bindParam(2, $hpswd);
-        $stmt->bindParam(3, $post['signupdate']);
-        $stmt->bindParam(4, $post['dob']);
-        $stmt->bindParam(5, $post['country']);
+        $stmt->bindParam(5, $hpswd);
 
         $stmt->execute(); // run the query to insert
         $conn = null; // closes connection after use

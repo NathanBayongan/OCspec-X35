@@ -33,15 +33,15 @@ require_once "assets/topbar.php"; // presenting header
 
 echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
 echo "<form method='post' action=''>";
-echo "<input type= 'text' name ='username' placeholder='username'>";
+echo "<input type= 'text' name ='fname' placeholder='First Name'>";
 echo "<br>";
-echo "<input type= 'password' name ='password' placeholder='password'>";
+echo "<input type= 'text' name ='sname' placeholder='Surname'>";
 echo "<br>";
-echo "<input type= 'text' name ='signupdate' placeholder='sign up date'>";
+echo "<input type= 'datetime-local' name ='dob' placeholder='Date of Birth'>";
 echo "<br>";
-echo "<input type= 'text' name ='dob' placeholder='date of birth'>";
+echo "<input type= 'text' name ='gender' placeholder='Gender'>";
 echo "<br>";
-echo "<input type= 'text' name ='country' placeholder='country'>";
+echo "<input type= 'password' name ='password' placeholder='Password'>";
 echo "<br>";
 echo "<input type= 'submit' value='register' id='submit'>";
 echo "</form>";
