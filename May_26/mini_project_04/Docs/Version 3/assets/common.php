@@ -76,3 +76,19 @@ function auditor($conn, $patientid, $code, $long){ // on doing any action, audit
     $conn = null; // closes the connection so it can't be abused
     return true; // Registration successful
 }
+
+function staff_grabber($conn){
+
+
+    $sql = "SELECT staffid, role, fname, sname, room FROM staff WHERE role = 'staff' != ? ORDER by role DESC";
+
+    $stmt = $conn->prepare($sql);
+    $exclude_role = "adm";
+
+    $stmt->bindParam(1, $exclude_role);
+
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $conn = null;
+    return $result;
+}

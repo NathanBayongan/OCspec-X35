@@ -1,0 +1,75 @@
+.container {
+    display: flex;/* converting elements into boxes */
+    justify-content: center;/* making focus to the left */
+    text-align: center;/* putting text to left side */
+    flex-direction: column;/* makes it go down instead of across*/
+    font-family:Arial,Helvetica,sans-serif;/* default font */
+    font-size:20px;
+    margin-left:40px;/* adding space to left so it doesnt rest on side of the screen*/
+    margin-right:40px;
+}
+.topbari{
+    background-color: #606C7C;
+}
+
+nav ul {
+
+    border :5px solid #B1B6BA;
+    list-style: none;/*removes bullet points*/
+    width: 300px;
+    margin:auto;
+    padding:0;/*removes padding*/
+    background-color: #D9D9D9;/* adds a background color*/
+    justify-content: flex-start;
+
+}
+
+nav li{/* creates space around li items in nav bar */
+    padding:5px 20px 5px 20px;/* top right bottom left padding*/
+}
+
+nav li:hover {/*sets up roll over for the nav bar */
+    background-color: darkgrey;/*changes color on hover*/
+
+}
+
+h1 {
+    color: #000000;
+    font-weight: bold;
+    text-underline: #000000;
+}
+
+body {
+    background-color: #83ADB5;
+}
+
+p {
+    background-color: #D9D9D9;
+    width: 1500px;
+    margin: auto;
+    font-size:30px;
+}
+
+#Bold {
+    font-weight: bold;
+}
+
+.content {
+    background-color: #B1B6BA;
+    border :15px solid #B1B6BA;
+    margin:auto;
+    margin-top:20px;
+    width:1500px;
+}
+
+#top {
+    padding-top: 5px;
+}
+
+#bottom {
+    padding-bottom: 10px;
+}
+
+#submit {
+    font-size: 30px;
+}

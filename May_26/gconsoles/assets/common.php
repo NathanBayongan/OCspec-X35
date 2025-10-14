@@ -118,12 +118,12 @@ function getnewuserid($conn, $username){
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result["user_id"];
 }
-function auditor($conn, $patientid, $code, $long){ // on doing any action, auditor is
-    $sql = "INSERT INTO audit (date, patientid, code, longdesc) VALUES (?, ?, ?, ?)";
+function auditor($conn, $userid, $code, $long){ // on doing any action, auditor is
+    $sql = "INSERT INTO audit (date, userid, code, longdesc) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql); // prepares the sql
     $date = date('Y-m-d'); // Y-m-d is the date orientation that php needs/accepts
     $stmt->bindParam(1, $date); // bind parameters for security
-    $stmt->bindParam(2, $patientid);
+    $stmt->bindParam(2, $userid);
     $stmt->bindParam(3, $code);
     $stmt->bindParam(4, $long);
 
