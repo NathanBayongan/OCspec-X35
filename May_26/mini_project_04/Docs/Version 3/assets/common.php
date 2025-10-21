@@ -80,7 +80,7 @@ function auditor($conn, $patientid, $code, $long){ // on doing any action, audit
 function staff_grabber($conn){
 
 
-    $sql = "SELECT staffid, role, fname, sname, room FROM staff WHERE role = 'staff' != ? ORDER by role DESC";
+    $sql = "SELECT staffid, role, fname, sname, room FROM staff WHERE role != ? ORDER by role DESC";
 
     $stmt = $conn->prepare($sql);
     $exclude_role = "adm";
