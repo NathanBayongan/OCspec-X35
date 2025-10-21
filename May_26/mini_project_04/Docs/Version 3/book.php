@@ -33,6 +33,25 @@ echo "<DOCTYPE html>";
 
 $staff = staff_grabber(dbconnect_insert());
 
+
+
+echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
+
+echo "<html>";  // opening html
+echo "<head>";  // opening head
+
+echo "<title>page title</title>";  // creating title
+echo "<link rel='stylesheet' type='text/css' href='css\styles.css'>";// getting css formatting for website from external
+
+echo "</head>";
+echo "<body>"; // opening body
+
+
+echo "<div class ='container'>"; // class container to give all items a default to reduce need for styling later
+require_once "assets/topbar.php"; // presenting header
+require_once "assets/nav.php";// presenting navigation bar
+echo "<div class='content'>";
+echo "<form method='post' action=''>";
 echo "<label for='appt-time'> Appointment Time:</label>";
 echo "<input type='time' name='appt_time' required>";
 
@@ -49,6 +68,20 @@ foreach ($staff as $staf) {
     } else if ($staf['role'] = "nur"){
         $role = 'Nurse';
     }
-    echo "<option value='".$staf['staff_id']."'>".$role. $staf['name']."</option>";
-        $staf['fname']." Room ".$staf['room']."</option>";
+    echo "<option value=".$staf['staffid'].">".$role." ". $staf['fname']." ".$staf['sname']." Room ".$staf['room']."</option>";
 }
+echo "</select>";
+echo "<input type='submit' name='submit' value='Submit'>";
+echo "</form>";
+echo '<br>';
+echo user_message();
+
+
+echo "</div>";
+
+echo "</div>";
+
+echo "</body>";
+
+echo "</html>";
+?>

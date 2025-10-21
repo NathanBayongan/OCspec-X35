@@ -94,13 +94,13 @@ function staff_grabber($conn){
 }
 
 function commit_booking($conn, $epoch){
-    $sql = "INSERT INTO book (userid, staffid, appointmentdate, bookedon) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO booking (patientid, doctorid, appointmentdate, bookingdate) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-
-    $stmt->bindParam(1, $_SESSION['userid']);
+$time=time();
+    $stmt->bindParam(1, $_SESSION['user_id']);
     $stmt->bindParam(2, $_POST['staff']);
     $stmt->bindParam(3, $epoch);
-    $stmt->bindParam(4, time());
+    $stmt->bindParam(4, $time);
 
     $stmt->execute();
     $conn = null;
