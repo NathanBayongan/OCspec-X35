@@ -4,19 +4,34 @@ session_start();
 require_once "assets/common.php";
 require_once "assets/dbconn.php";
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if($_SERVER["REQUEST_METHOD"] == "POST") { // This block of code SHOULD be here unless there is a reason for it not to be
 
-    $tmp = $_POST["appt_date"]. ' ' . $_POST["appt_time"];
-    $epoch_time = strtotime($tmp); // Best to preassign it to a variable to ensure consistent results during busy hours
+    try {
 
-    echo $epoch_time;
-    echo time();
+        $tmp = $_POST["appt_date"] . ' ' . $_POST["appt_time"];
+        $epoch_time = strtotime($tmp); // Best to preassign it to a variable to ensure consistent results during busy hours
+        if(commit_booking(dbconnect_insert(),$epoch_time)){
+            $_SESSION['usermessage'] = "SUCCESS: Your booking has been confirmed!";
+            header("Location: booking.php");
+            exit;
+        } else {
+            $_SESSION['usermessage'] = "ERROR: Booking has failed!";
+        }
+
+    }
+    catch(PDOException $e) {
+        $_SESSION["usermessage"] = "Error: " . $e->getMessage();
+    } catch (PDOException $e) {
+        $_SESSION["usermessage"] = "Error: " . $e->getMessage();
+    }
 }
 
 
 
+echo "<DOCTYPE html>";
 
-$staff = staff_grabber(dbconnect_select());
+
+$staff = staff_grabber(dbconnect_insert());
 
 echo "<label for='appt-time'> Appointment Time:</label>";
 echo "<input type='time' name='appt_time' required>";
