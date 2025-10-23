@@ -49,7 +49,7 @@ echo "<body>"; // opening body
 
 echo "<div class ='container'>"; // class container to give all items a default to reduce need for styling later
 require_once "assets/topbar.php"; // presenting header
-require_once "assets/nav.php";// presenting navigation bar
+
 echo "<div class='content'>";
 echo "<form method='post' action=''>";
 echo "<label for='appt-time'> Appointment Time:</label>";

@@ -106,3 +106,23 @@ $time=time();
     $conn = null;
     return true;
 }
+
+
+function appt_grabber($conn){
+
+    $sql = "SELECT b.bookingid, b.appointmentdate, b.bookingdate, s.role, s.fname, s.sname, s.room FROM booking b JOIN staff s ON b.doctorid = s.staffid WHERE b.patientid = ? ORDER by b.appointmentdate ASC";
+
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bindParam(1, $_SESSION['user_id']);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $conn = null;
+    if($result){
+        return $result;
+    } else {
+        return false;
+    }
+
+
+}

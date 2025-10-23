@@ -9,6 +9,7 @@ if(!isset($_SESSION['user'])){
     echo "<li><a href='register.php'>register</a></li>";
 } else {
 
+    echo "<li><a href='book.php'>book appointment</a></li>";
     echo "<li><a href='logout.php'>logout</a></li>";
 }
 
