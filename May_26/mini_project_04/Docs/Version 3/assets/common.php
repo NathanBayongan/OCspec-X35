@@ -126,3 +126,39 @@ function appt_grabber($conn){
 
 
 }
+
+function cancel_appt($conn, $aptid){
+    $sql = "DELETE FROM booking WHERE bookingid = ?"; // Deletes an appointment from the appointment list.
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(1, $aptid);
+    $stmt->execute();
+    $conn = null;
+    return true;
+}
+
+
+function appt_fetch($conn, $bookingid){
+    $sql = "SELECT * FROM booking WHERE bookingid = ?";
+    // Get all staff from database where role NOT equal to "adm"
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bindParam(1, $bookingid);
+
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $conn = null;
+    return $result;
+}
+
+
+function appt_update($conn, $bookingid, $appointmentdate){
+    $sql = "UPDATE booking SET doctorid=?, appointmentdate = ? WHERE bookingid = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(1, $_POST['staff']);
+    $stmt->bindParam(2, $appointmentdate);
+    $stmt->bindParam(3, $bookingid);
+    $stmt->execute();
+    $conn = null;
+    return true;
+
+}

@@ -9,9 +9,28 @@ if (!isset($_GET['message'])) { // Checks if variable 'message' has been assigne
     $message = htmlspecialchars(urldecode($_GET['message']));
 }
 
-
 require_once "assets/dbconn.php";
 require_once "assets/common.php";
+
+if($_SERVER["REQUEST_METHOD"] === "POST") {
+    if(isset($_POST['appdelete'])) {
+        try {
+            if (Cancel_appt(dbconnect_insert(), $_POST['apptid'])) {
+                $_SESSION["usermessage"] = "Appointment cancelled.";
+            } else {
+                $_SESSION["usermessage"] = "Appointment failed to cancelled.";
+            }
+        } catch (Exception $e) {
+            $_SESSION["usermessage"] = "Appointment failed to cancelled.";
+        } catch (PDOException $e) {
+            $_SESSION["usermessage"] = "Appointment failed to cancelled.";
+        }
+    } elseif((isset($_POST['appchange']))) {
+        $_SESSION["apptid"] = $_POST['apptid'];
+        header("location: alternate_book.php");
+        exit;
+    }
+}
 
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
 
@@ -48,13 +67,20 @@ if (!$appts) {
             $role = "Nurse";
         }
 
+        echo "<form action=' ' method='post'>";
+
         echo "<tr>";
         echo "<td> Date: " . date('M d, Y @ h:i A', $appt['appointmentdate']) . "</td>";
         // Date is built in function with epoch time. It is set to display the date in a format we want it to be displayed.
         echo "<td> Made on: " . date('M d, Y @ h:i A', $appt['bookingdate']) . "</td>";
         echo "<td> With: " . $role . " " . $appt['fname'] . " " . $appt['sname'] . "</td>";
         echo "<td> Room: " . $appt['room'] . "</td>";
+        echo "<td><input type='Hidden' name='apptid' value='".$appt['bookingid']."'>
+                <input type='submit' name='appdelete' value='Cancel Appt' />
+                <input type='submit' name='appchange' value='Change Appt' /></td>";
+
         echo "</tr>";
+        echo "</form>";
 
     }
     echo "</table>";
