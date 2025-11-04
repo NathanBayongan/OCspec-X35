@@ -1,15 +1,20 @@
-<?php
-//this opens the php code section
-session_start();
+<?php //this opens the php code section
+session_start(); // connect to the session to get important information
 
 require_once "assets/common.php"; // connects this to the common function
 require_once "assets/dbconn.php"; // connects this to the function that connects it to the database
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") { // checks the request method
+if (isset($_SESSION['userid'])) {  // Looks for if the user is already logged in
+    $_SESSION['usermessage'] = "ERROR: You have already logged in!";  // tells them they are logged in and redirect to index
+    header("Location: index.php");
+    exit;
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") { // checks for post condition
     if (reg_user(dbconnect_insert(), $_POST)) {
         $_SESSION["usermessage"] = "User has been created successfully";
         header("Location: index.php");
-        exit;
+        exit; // this ensures the redirect works and stops any further code executing.
 
     } else {
         $_SESSION["usermessage"] = "User registration failed";
