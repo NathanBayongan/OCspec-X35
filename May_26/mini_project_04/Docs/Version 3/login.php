@@ -4,13 +4,14 @@ session_start();
 require_once"assets/dbconn.php";
 require_once"assets/common.php";
 
-if (isset($_SESSION['user'])){
-    $_SESSION["usermessage"] = "You are already logged in";
+if (isset($_SESSION['user'])){ // Checks if user is already logged in
+    $_SESSION["usermessage"] = "You are already logged in"; // redirects them with a message if they are.
     //header("Location: index.php");
     exit; // stops further execution
 }
 elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usr = login(dbconnect_insert(), $_POST);
+    $usr = login(dbconnect_insert(), $_POST); // does it here to ensure we can use parts of the data if successful
+
 
     if ($usr && password_verify($_POST['password'], $usr["password"])) {
         $_SESSION["user"] = true;
