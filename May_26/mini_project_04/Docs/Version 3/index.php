@@ -1,5 +1,4 @@
-<?php
-//this opens the php code section
+<?php //this opens the php code section
 
 if (!isset($_GET['message'])) { // Checks if variable 'message' has been assigned anything
     session_start();
@@ -13,7 +12,7 @@ if (!isset($_GET['message'])) { // Checks if variable 'message' has been assigne
 require_once "assets/dbconn.php";
 require_once "assets/common.php";
 
-echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
+echo "<!DOCTYPE html>";  // ensures the page is read as a HTML file
 
 echo "<html>";  // opening html
 echo "<head>";  // opening head
