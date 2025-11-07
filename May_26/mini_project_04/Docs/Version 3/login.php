@@ -17,7 +17,7 @@ if (isset($_SESSION['user'])){ // Checks if user is already logged in
         $_SESSION["user"] = true;
         $_SESSION["user_id"] = $usr["patient_id"];
         $_SESSION["usermessage"] = "Success! = user successfully logged in";
-        auditor(dbconnect_insert(), $_SESSION["user_id"], "log", "User successfully logged in");
+        auditor(dbconnect_insert(), $_SESSION["user_id"], "login", "User successfully logged in");
         header("Location: index.php");
         exit;
     } else {
@@ -46,11 +46,9 @@ require_once "assets/nav.php";// presenting navigation bar
 
 echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
 echo "<form method='post' action=''>";
-echo "<input type= 'text'name ='fname' placeholder='First Name'>";
+echo "<input type= 'text'name ='email' placeholder='Email'>";
 echo "<br>";
-echo "<input type= 'text'name ='sname' placeholder='Surname'>";
-echo "<br>";
-echo "<input type= 'password'name ='password' placeholder='password'>";
+echo "<input type= 'password'name ='password' placeholder='Password'>";
 echo "<br>";
 echo "<input type= 'submit' value='login' id='submit'>";
 echo "</form>";

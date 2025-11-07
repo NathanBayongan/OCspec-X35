@@ -109,7 +109,18 @@ echo "</div>";
 
 echo "</div>";
 echo '<br>';
-require_once "assets/nav.php";// presenting navigation bar
+
+echo "</div class='navi'>";
+
+echo "<nav>";
+
+echo "<ul>";//declares unordered list
+
+echo "<li class='linkbox'> <a href='index.php'>Home</a></li>"; #open a cell for a link to be housed
+
+echo "</ul>";//closes list
+
+echo "</nav>";
 
 echo "</body>";
 

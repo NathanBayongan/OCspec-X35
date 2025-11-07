@@ -79,7 +79,17 @@ echo user_message();
 
 echo "</div>";
 
-echo "</div>";
+echo "</div class='navi'>";
+
+echo "<nav>";
+
+echo "<ul>";//declares unordered list
+
+echo "<li class='linkbox'> <a href='index.php'>Home</a></li>"; #open a cell for a link to be housed
+
+echo "</ul>";//closes list
+
+echo "</nav>";
 
 echo "</body>";
 

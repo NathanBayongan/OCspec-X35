@@ -12,43 +12,39 @@ function user_message()
 }
 
 function login($conn, $post){
-    try{ // try this code, catch errors
-        $sql = "SELECT * FROM patient WHERE fname = ?"; // set up sql statement
-        $stmt = $conn->prepare($sql); // prepares
-        $stmt->bindParam(1, $post['fname']); // binds the parameters to execute
-        $stmt->execute(); // runs sql code
-        $result = $stmt->fetch(PDO::FETCH_ASSOC); // Brings back results
-        $conn = null; // Breaks off connection once it is used
+    $sql = "SELECT * FROM patient WHERE email = ?"; // set up sql statement
+    $stmt = $conn->prepare($sql); // prepares
+    $stmt->bindParam(1, $post['email']); // binds the parameters to execute
+    $stmt->execute(); // runs sql code
+    $result = $stmt->fetch(PDO::FETCH_ASSOC); // Brings back results
+    $conn = null; // Breaks off connection once it is used
 
-        if($result){ // If there is a result returned
-            return $result;
+    if($result){ // If there is a result returned
+        return $result;
 
-        } else {
-            $SESSION['usermessage'] = "User not found";
-        }
-
-    } catch (Exception $e) {
-        $SESSION['Error'] = $e->getMessage();
-        throw new Exception("User Registration error: ", $e); // throws exception
+    } else {
+        $SESSION['usermessage'] = "User not found";
     }
+
 }
 
 function reg_user($conn, $post)
 {
     try {
         // prepare and execute the SQL query
-        $sql = "INSERT INTO patient (fname, sname, dob, gender, password) VALUES (?, ?, ?, ?, ?)"; // prepares statement
+        $sql = "INSERT INTO patient (fname, sname, dob, gender,email, password) VALUES (?, ?, ?, ?, ?, ?)"; // prepares statement
         $stmt = $conn->prepare($sql); // prepare to sql
-
+        $time=strtotime($post['dob']);
         $stmt->bindParam(1, $post['fname']); // bind parameters for security
         $stmt->bindParam(2, $post['sname']);
-        $stmt->bindParam(3, $post['dob']);
+        $stmt->bindParam(3, $time);
         $stmt->bindParam(4, $post['gender']);
+        $stmt->bindParam(5, $post['email']);
         // hash the password
         $hpswd = password_hash($post['password'], PASSWORD_DEFAULT); // has the password
         // Using in built php library using default encryption because we have nothing else built into this code base
         // In a business environment, it's better to use PASSWORD_BCRYPTb
-        $stmt->bindParam(5, $hpswd);
+        $stmt->bindParam(6, $hpswd);
 
         $stmt->execute(); // run the query to insert
         $conn = null; // closes connection after use
@@ -63,11 +59,11 @@ function reg_user($conn, $post)
     }
 }
 
-function getnewuserid($conn, $fname)
+function getnewuserid($conn, $email)
 {
-    $sql = "SELECT patient_id FROM patient WHERE fname  = ?";
+    $sql = "SELECT patient_id FROM patient WHERE email  = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(1, $fname);
+    $stmt->bindParam(1, $email);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result["user_id"];

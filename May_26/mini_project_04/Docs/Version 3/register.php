@@ -46,6 +46,8 @@ echo "<input type= 'datetime-local' name ='dob' placeholder='Date of Birth'>";
 echo "<br>";
 echo "<input type= 'text' name ='gender' placeholder='Gender'>";
 echo "<br>";
+echo "<input type= 'Email' name ='email' placeholder='Email'>";
+echo "<br>";
 echo "<input type= 'password' name ='password' placeholder='Password'>";
 echo "<br>";
 echo "<input type= 'submit' value='register' id='submit'>";
